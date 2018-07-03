@@ -1,4 +1,6 @@
-import quandl
+#import quandl
+#from iexfinance import get_historical_data
+import pandas_datareader.data as web
 import datetime as dt
 import dash
 import dash_core_components as dcc
@@ -45,10 +47,11 @@ Output(component_id='output_graph', component_property='children'),
 def update_graph(input_data):
     start_date = dt.datetime(2017,1,1)
     end_date = dt.datetime.now()
-    input_data2 = "WIKI/"+input_data
+    #input_data2 = "WIKI/"+input_data
 
     #Get request for API
-    df = quandl.get(input_data2,start_date=start_date, end_date=end_date)
+    #df = get_historical_data(input_data,start_date=start_date, end_date=end_date, output_format='pandas')
+    df = web.DataReader(input_data,'google',start_date, end_date)
     # Graph layout
     return dcc.Graph(
             id='stocks_graph',
