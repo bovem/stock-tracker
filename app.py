@@ -1,12 +1,14 @@
 import quandl
 import datetime as dt
+import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-import dash
+
 
 app = dash.Dash()
 
+#HTML Layout
 app.layout = html.Div(children=[
             
                 html.H1(className='text-center', children="""
@@ -44,8 +46,10 @@ def update_graph(input_data):
     start_date = dt.datetime(2017,1,1)
     end_date = dt.datetime.now()
     input_data2 = "WIKI/"+input_data
-    df = quandl.get(input_data2,start_date=start_date, end_date=end_date)
 
+    #Get request for API
+    df = quandl.get(input_data2,start_date=start_date, end_date=end_date)
+    # Graph layout
     return dcc.Graph(
             id='stocks_graph',
             figure={
