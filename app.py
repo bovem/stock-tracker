@@ -1,5 +1,5 @@
 #import quandl
-#from iexfinance import get_historical_data
+from iexfinance import get_historical_data, Stock
 import pandas_datareader.data as web
 import datetime as dt
 import dash
@@ -50,13 +50,14 @@ def update_graph(input_data):
     #input_data2 = "WIKI/"+input_data
 
     #Get request for API
-    #df = get_historical_data(input_data,start_date=start_date, end_date=end_date, output_format='pandas')
-    df = web.DataReader(input_data,'google',start_date, end_date)
+    #df = get_historical_data(str(input_data),start_date=start_date, end_date=end_date, output_format='pandas')
+    df = Stock(str(input_data))
+    
     # Graph layout
     return dcc.Graph(
             id='stocks_graph',
             figure={
-            'data':[{'x':df.index, 'y':df.Close, 'type':'line', 'name':input_data}],
+            'data':[{'x':end_date, 'y':df.get_close(), 'type':'dot ', 'name':input_data}],
             'layout':{'title':input_data.upper()}})
 
 if __name__ == '__main__':
