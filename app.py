@@ -5,6 +5,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
+import time
 
 
 app = dash.Dash()
@@ -55,24 +56,27 @@ def update_graph(input_data):
     input_data = str(input_data).upper()
 
     #Get request for API
-    name = ticker.loc[input_data, "Company"] 
-    df = get_historical_data(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
-    tick = Stock(input_data)
-    
-    # Graph layout
-    return [dcc.Graph(
+    try:
+            name = ticker.loc[input_data, "Company"] 
+            df = get_historical_data(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
+            tick = Stock(input_data)
+
+            #graph layout
+            return [dcc.Graph(
             id='stocks_graph',
             figure={
             'data':[{'x':df.index, 'y':df.close, 'type':'line', 'name':input_data}],
             'layout':{'title':str(name)}}),
+
+            #bottom console
             html.Div(className='container',children=[
             html.Div(className="row", children=[
             html.Div(className="col-sm-2", children=[
-            html.H1(className="center-align",children=[tick.get_price()])]),
+            html.H2(className="center-align",children=[df.close[-1]])]),
             html.Div(className="col-sm-2", children=[
-            html.H5(className="center-align",children=[change_pct(df.close[-2],tick.get_price())])]),
+            html.H5(className="center-align",children=[change_pct(df.close[-2],df.close[-1])])]),
             html.Div(className="col-sm-2", children=[
-            html.H6(className="center-align",children=["Open"]), html.H4(className="center-align",children=[tick.get_open()])]),
+            html.H6(className="center-align",children=["Open"]), html.H4(className="center-align",children=[df.open[-1]])]),
              html.Div(className="col-sm-2", children=[
             html.H6(className="center-align",children=["High"]), html.H4(className="center-align",children=[df.high[-1]])]),
               html.Div(className="col-sm-2", children=[
@@ -81,6 +85,9 @@ def update_graph(input_data):
             html.H6(className="center-align",children=["Volume"]), html.H4(className="center-align",children=[df.volume[-1]])])
             ])])
            ]
-
+            
+    except:    
+            time.sleep(1)   
+    
 if __name__ == '__main__':
     app.run_server(debug=True)
