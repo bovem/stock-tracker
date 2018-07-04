@@ -18,16 +18,26 @@ app.layout = html.Div(children=[
                     """),
                 #Using bootstrap theme 
 		        html.Div(className='container', 
-		                children=[html.Div(className ='row', 
+		                children=[html.Hr(), html.Div(className ='row', 
 
                         #Ticker column
                         children=[html.Div(className ='col-lg-4',
-                        children=[html.Form(html.Fieldset(
+                        children=[html.Form(children=[html.Fieldset(
                         children=[html.Div(className ='form-group', 
                         children=[html.Label(children="""TICKER"""),
                         dcc.Input(id='input', className='form-control',value='', type='text')]
                         )]
-                        ))]),
+                        ),html.Fieldset(
+                        children=[html.Div(className ='form-group', 
+                        children=[html.Label(children="""START DATE"""),
+                        dcc.Input(id='input_start', className='form-control',value='', placeholder="1,1,2017", type='text')]
+                        )]
+                        ),html.Fieldset(
+                        children=[html.Div(className ='form-group', 
+                        children=[html.Label(children="""END DATE"""),
+                        dcc.Input(id='input_end', className='form-control',value='',placeholder="31,1,2017", type='text')]
+                        )]
+                        )])]),
 
                         #Graph column
                         html.Div(className='col-lg-8',
