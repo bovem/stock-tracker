@@ -13,20 +13,29 @@ ticker = pd.read_csv('tickers.csv', index_col="Symbol")
 
 #HTML Layout
 app.layout = html.Div(children=[
-            
-                html.H1(className='text-center', children="""
-                    STOCK TRACKER
-                    """),
+             html.Div(className="container", 
+                     children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
+                     children=[html.A(className='navbar-brand', href="#",
+                     children=["""Stock Tracker"""]),html.Div( className="collapse navbar-collapse",id="navbarColor03",
+                     children=[html.Ul(className="navbar-nav mr-auto", 
+                     children=[html.Li(className='nav-item active', 
+                     children=[html.A(className="nav-link", href="/home", children="""Home""")]),
+                            html.Li(className='nav-item', 
+                     children=[html.A(className="nav-link", href="/top-gainer", children="""Top Gainers""")]),
+                            html.Li(className='nav-item', 
+                     children=[html.A(className="nav-link", href="/top-loser", children="""Top Losers""")])])])])]),
+
+
                 #Using bootstrap theme 
 		        html.Div(className='container', 
-		                children=[html.Hr(), html.Div(className ='row', 
+		                children=[html.Hr(className="seperator"), html.Div(className ='row', 
 
                         #Ticker column
                         children=[html.Div(className ='col-lg-4',
                         children=[html.Form(
                         children=[html.Fieldset(
                         children=[html.Div(className ='form-group', 
-                        children=[html.Label(children="""TICKER"""),
+                        children=[html.Label(children="""Ticker"""),
                         dcc.Input(id='input', className='form-control',value='', type='text')]
                         )]
                         )])]),
@@ -34,9 +43,7 @@ app.layout = html.Div(children=[
                         #Graph column
                         html.Div(className='col-lg-8',
                         children=[html.Div(id='output_graph')])])])
-
-
-])
+                ])
 
 app.css.append_css({"external_url": '/static/bootswatch.css'})
 app.css.append_css({"external_url": '/static/styles.css'}) #stylesheet used

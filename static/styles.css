@@ -1,3 +1,7 @@
 .center-align{
 	text-align: center;
 }
+
+.seperator {
+    visibility: hidden;
+}
