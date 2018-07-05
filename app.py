@@ -52,7 +52,10 @@ app.css.append_css({"external_url": '/static/styles.css'}) #stylesheet used
 #Functions
 def change_pct(open_price,current_price):
     pct = ((current_price-open_price)/open_price)*100
-    pct_string = str(round(pct,2))+"%"
+    if pct>0:
+        pct_string = "+"+str(round(pct,2))+"%"
+    else:    
+        pct_string = str(round(pct,2))+"%"
     return pct_string
 
 @app.callback(
