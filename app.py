@@ -31,19 +31,20 @@ app.layout = html.Div(children=[
 		                children=[html.Hr(className="seperator"), html.Div(className ='row', 
 
                         #Ticker column
-                        children=[html.Div(className ='col-lg-4',
+                        children=[html.Div(className ='col-lg-12',
                         children=[html.Form(
                         children=[html.Fieldset(
                         children=[html.Div(className ='form-group', 
                         children=[html.Label(children="""Ticker"""),
                         dcc.Input(id='input', className='form-control',value='', type='text')]
                         )]
-                        )])]),
+                        )])])]),
 
                         #Graph column
-                        html.Div(className='col-lg-8',
-                        children=[html.Div(id='output_graph')])])])
-                ])
+                        html.Div(className="row", children=html.Div(className='col-lg-12',
+                        children=[html.Div(id='output_graph')]))
+                        ])])
+            
 
 app.css.append_css({"external_url": '/static/bootswatch.css'})
 app.css.append_css({"external_url": '/static/styles.css'}) #stylesheet used
@@ -69,29 +70,29 @@ def update_graph(input_data):
             tick = Stock(input_data)
 
             #graph layout
-            return [dcc.Graph(
+            return (html.Div(className="row", children=[
+            html.Div(className="col-lg-8", children=[dcc.Graph(
             id='stocks_graph',
             figure={
             'data':[{'x':df.index, 'y':df.close, 'type':'line', 'name':input_data}],
-            'layout':{'title':str(name)}}),
+            'layout':{'title':str(name)}})]),
 
             #bottom console
-            html.Div(className='container',children=[
+            html.Div(className="col-lg-4", children=[
+            html.Div(className='container top-margin',children=[
             html.Div(className="row", children=[
-            html.Div(className="col-sm-2", children=[
-            html.H2(className="center-align",children=[df.close[-1]])]),
-            html.Div(className="col-sm-2", children=[
-            html.H5(className="center-align",children=[change_pct(df.close[-2],df.close[-1])])]),
-            html.Div(className="col-sm-2", children=[
+            html.Div(className="col-sm-8", children=[
+            html.H1(className="center-align big-close",children=[df.close[-1]])]),
+            html.Div(className="col-sm-4", children=[
+            html.H5(className="center-align",children=[change_pct(df.close[-2],df.close[-1])])])]),
+            html.Div(className="row", children=[html.Div(className="col-sm-6", children=[
             html.H6(className="center-align",children=["Open"]), html.H4(className="center-align",children=[df.open[-1]])]),
-             html.Div(className="col-sm-2", children=[
-            html.H6(className="center-align",children=["High"]), html.H4(className="center-align",children=[df.high[-1]])]),
-              html.Div(className="col-sm-2", children=[
+             html.Div(className="col-sm-6", children=[
+            html.H6(className="center-align",children=["High"]), html.H4(className="center-align",children=[df.high[-1]])])]),
+             html.Div(className="row", children=[html.Div(className="col-sm-6", children=[
             html.H6(className="center-align",children=["Low"]), html.H4(className="center-align",children=[df.low[-1]])]),
-               html.Div(className="col-sm-2", children=[
-            html.H6(className="center-align",children=["Volume"]), html.H4(className="center-align",children=[df.volume[-1]])])
-            ])])
-           ]
+             html.Div(className="col-sm-6", children=[
+            html.H6(className="center-align",children=["Volume"]), html.H4(className="center-align",children=[df.volume[-1]])])])])])]))
             
     except:    
             time.sleep(1)   

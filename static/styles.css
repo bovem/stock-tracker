@@ -5,3 +5,9 @@
 .seperator {
     visibility: hidden;
 }
+.top-margin{
+	margin-top: 5rem;
+}
+.big-close{
+	font-size: 80px;
+}
