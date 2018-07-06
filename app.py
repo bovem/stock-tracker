@@ -19,15 +19,15 @@ app.layout = html.Div(children=[
              #navigation bar
              html.Div(className="container", 
                      children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
-                     children=[html.A(className='navbar-brand', href="#",
+                     children=[html.A(className='navbar-brand', href="/stocks",
                      children=["""Stock Tracker"""]),html.Div( className="collapse navbar-collapse",id="navbarColor03",
                      children=[html.Ul(className="navbar-nav mr-auto", 
-                     children=[html.Li(className='nav-item active', 
-                     children=[html.A(className="nav-link", href="/home", children="""Home""")]),
-                            html.Li(className='nav-item', 
+                     children=[html.Li(className='nav-item', 
                      children=[html.A(className="nav-link", href="/top-gainer", children="""Top Gainers""")]),
-                            html.Li(className='nav-item', 
-                     children=[html.A(className="nav-link", href="/top-loser", children="""Top Losers""")])])])])]),
+                     html.Li(className='nav-item', 
+                     children=[html.A(className="nav-link", href="/top-loser", children="""Top Losers""")]),
+                     html.Li(className='nav-item', 
+                     children=[html.A(className="nav-link", href="/info", children="""Info""")])])])])]),
             html.Div(id='page-content') 
 
              ])
@@ -77,7 +77,28 @@ def display_page(pathname):
          return (html.Div(children=[html.Div(className="container",
             children=[html.Hr(className="seperator"), html.Table(className="table table-hover",
             children=[html.Thead(children=[html.Tr(className="table-success", 
-            children=[html.Th(), html.Td(), html.Td(), html.Td()])])
+            children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")])]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")]),
+            html.Tr(children=[html.Th(children="Ticker"), html.Td(children="Company Name"), 
+            html.Td(children="Current Price"), html.Td(children="Percentage Change")])
             ])])]))     
 
 
