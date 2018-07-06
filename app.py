@@ -13,6 +13,10 @@ ticker = pd.read_csv('tickers.csv', index_col="Symbol")
 
 #HTML Layout
 app.layout = html.Div(children=[
+             #address bar
+             dcc.Location(id='url', refresh=False),
+
+             #navigation bar
              html.Div(className="container", 
                      children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
                      children=[html.A(className='navbar-brand', href="#",
@@ -24,31 +28,17 @@ app.layout = html.Div(children=[
                      children=[html.A(className="nav-link", href="/top-gainer", children="""Top Gainers""")]),
                             html.Li(className='nav-item', 
                      children=[html.A(className="nav-link", href="/top-loser", children="""Top Losers""")])])])])]),
+            html.Div(id='page-content') 
 
-
-                #Using bootstrap theme 
-		        html.Div(className='container', 
-		                children=[html.Hr(className="seperator"), html.Div(className ='row', 
-
-                        #Ticker column
-                        children=[html.Div(className ='col-lg-12',
-                        children=[html.Form(
-                        children=[html.Fieldset(
-                        children=[html.Div(className ='form-group', 
-                        children=[html.Label(children="""Ticker"""),
-                        dcc.Input(id='input', className='form-control',value='', type='text')]
-                        )]
-                        )])])]),
-
-                        #Graph column
-                        html.Div(className="row", children=html.Div(className='col-lg-12',
-                        children=[html.Div(id='output_graph')]))
-                        ])])
+             ])
+                #Stocks app
+		        
             
 
 app.css.append_css({"external_url": '/static/bootswatch.css'})
 app.css.append_css({"external_url": '/static/styles.css'}) #stylesheet used
-
+app.config['suppress_callback_exceptions']=True #To overcome exceptions due to missing
+                                                #html components
 #Functions
 def change_pct(open_price,current_price):
     pct = ((current_price-open_price)/open_price)*100
@@ -57,6 +47,39 @@ def change_pct(open_price,current_price):
     else:    
         pct_string = str(round(pct,2))+"%"
     return pct_string
+
+
+@app.callback(Output('page-content', 'children'),
+              [Input('url', 'pathname')])
+def display_page(pathname):
+    if pathname == "/stocks":
+        return html.Div([
+            html.Div(className='container', 
+                            children=[html.Hr(className="seperator"), html.Div(className ='row', 
+
+                            #Ticker column
+                            children=[html.Div(className ='col-lg-12',
+                            children=[html.Form(
+                            children=[html.Fieldset(
+                            children=[html.Div(className ='form-group', 
+                            children=[html.Label(children="""Ticker"""),
+                            dcc.Input(id='input', className='form-control',value='', type='text')]
+                            )]
+                            )])])]),
+
+                            #Graph column
+                            html.Div(className="row", children=html.Div(className='col-lg-12',
+                            children=[html.Div(id='output_graph')]))
+                            ])
+        ])
+
+    elif pathname == "/top-gainer":
+         return (html.Div(children=[html.Div(className="container",
+            children=[html.Hr(className="seperator"), html.Table(className="table table-hover",
+            children=[html.Thead(children=[html.Tr(className="table-success", 
+            children=[html.Th(), html.Td(), html.Td(), html.Td()])])
+            ])])]))     
+
 
 @app.callback(
 Output(component_id='output_graph', component_property='children'),
@@ -98,7 +121,8 @@ def update_graph(input_data):
             html.H6(className="center-align",children=["Volume"]), html.H4(className="center-align",children=[df.volume[-1]])])])])])]))
             
     except:    
-            time.sleep(1)   
-    
+            time.sleep(1) 
+
+            
 if __name__ == '__main__':
     app.run_server(debug=True)
