@@ -1,8 +1,12 @@
-from iexfinance import get_historical_data
-from datetime import datetime
+"""import pandas_datareader.data as web
+f = web.DataReader('gs', 'iex-tops')
 
-start = datetime(2017, 2, 9)
-end = datetime(2017, 5, 24)
 
-df = get_historical_data("TSLA", start=start, end=end, output_format='pandas')
-print(df.head())
+print(f[:10])"""
+
+from iexfinance import get_market_last, get_stats_intraday,get_iex_listed_symbol_dir, get_available_symbols
+
+#print(get_price(output_format="pandas"))
+#print(get_stats_intraday(output_format="pandas",symbol="AAPL"))
+print(get_available_symbols(output_format="pandas")[0]['symbol'])
+print(get_available_symbols(output_format="pandas")[0]['name'])
