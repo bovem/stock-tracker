@@ -79,7 +79,16 @@ def display_page(pathname):
 
     #INFO PAGE
     elif pathname == "/info":
-        pass
+        return html.Div(children=[
+            dcc.Markdown('''
+
+# This is an <h1> tag
+
+## This is an <h2> tag
+
+###### This is an <h6> tag
+''')])
+
     
 
 #CALLBACK FUNCTION FOR GRAPH
