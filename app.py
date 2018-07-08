@@ -1,4 +1,4 @@
-from iexfinance import get_historical_data, Stock
+from iexfinance import get_historical_data
 import pandas as pd
 import datetime as dt
 import dash
@@ -95,8 +95,7 @@ def update_graph(input_data):
     try:
             name = ticker.loc[input_data, "Company"] 
             df = get_historical_data(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
-            tick = Stock(input_data)
-
+            
             #CALCULATING PERCENTAGE CHANGE
             pct_changes,COLOR = pct_change_formatter(pct_change(df.close[-2],df.close[-1]))
 
