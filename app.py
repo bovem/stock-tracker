@@ -6,6 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import time
+from info_page import info_page_layout
 
 app = dash.Dash()
 
@@ -18,7 +19,7 @@ app.layout = html.Div(children=[
              dcc.Location(id='url', refresh=False),
 
              #NAVIGATION BAR
-             html.Div(className="container", 
+             html.Div(className="container top-navbar", 
                      children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
                      children=[html.A(className='navbar-brand', href="/",
                      children=["""Stock Tracker"""]),html.Div( className="collapse navbar-collapse",id="navbarColor03",
@@ -79,62 +80,7 @@ def display_page(pathname):
 
     #INFO PAGE
     elif pathname == "/info":
-
-        return html.Div(className='container', 
-            children=[html.Hr(className="seperator"), 
-
-            #FIRST SECTION
-            html.Div(className='container',
-            children=[html.H2(className="display-3", children="How it works?"),
-            html.Hr(className="my-4"), html.P(className="lead", 
-            children=["""Stock tracker is a web application for fetching data of a 
-            NASDAQ listed company using ticker symbol. It uses iexfinance API for fetching
-             data and Dash, a data visualistion framework by plot.ly"""]), html.P(className="lead",
-            children=["""Enter any ticker symbol for a NASDAQ listed company (such as "AAPL" or "GOOGL" 
-            or "MSFT") and data is displayed in realtime alongiwth Graph."""]),
-            html.Img(className="col-lg-12 img-margin",src="static/images/Untitled.png"),
-            html.P(className="lead",
-            children=[html.A(html.Button('Try it', className='btn btn-primary btn-lg right-margin'), href='/'), 
-            html.A(html.Button('Source Code', className='btn btn-secondary btn-lg'), href='/')])]),
-
-            #SECOND SECTION
-            html.Div(className="container",
-            children=[html.H2(className="display-3 top-margin", children=["How I made it?"]),
-            html.Hr(className="my-4"), html.H5(children="Data Collection"), html.P(className="lead",
-            children=["""I used """,html.A(href="/", children="iexfinance"),""" API for stock data. 
-            It provides per day data including Open price, Close price,High & Low values and Volume 
-            of the stock."""]),
-
-            html.H5(children="Exploratory Data Analysis"),
-            html.P(className="lead",
-            children=["""  From the data provided by API(open, close, high, low and volume), 
-            I calculated Percentage change using formula. """]),
-            html.P(className="lead",
-            children=[html.Code("""Percentage Change = ((Current Price - Open Price)/Open Price)x100""")]),
-            html.P(className="lead", 
-            children=[""" I used a "ticker.csv" file for fetching name of the company from its ticker symbol."""]),
-
-            html.H5(children="Data Visualistion"),
-            html.P(className="lead",
-            children=["""I used """,html.A(href="/", children="Dash"),""" for Data Visualisation which 
-            is a summation of """,html.A(href="/", children="Flask Framework"), """, """,
-            html.A(href="/", children="Plotly"),""" and """,
-            html.A(href="/", children="ReactJS"),""" for real time update of graph and data."""])
-            ]),
-
-            #THIRD SECTION\
-            html.Div(className="container", 
-            children=[html.H2(className="display-3 top-margin", children="Libraries Used"),
-            html.Hr(className="my-4"), html.Ul(className="lib-list",
-            children=[html.Li("dash"), html.Li("dash_core_components"), html.Li("dash_html_components"), 
-            html.Li("iexfinance"), html.Li("pandas"), html.Li("datetime"), html.Li("time")]),
-            html.P(className="lead", children=["""Feel free to open a issue at """,
-            html.A(href="/", children="github"),""" if you have any problems installing packages
-            or the application isn't working on your system."""])])
-            
-])
-
-
+        return (info_page_layout)
 
 #CALLBACK FUNCTION FOR GRAPH
 @app.callback(
