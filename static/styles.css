@@ -11,3 +11,13 @@
 .big-close{
 	font-size: 80px;
 }
+.right-margin{
+	margin-right: 1rem;
+}
+.lib-list{
+	list-style-type: none;
+}
+.img-margin{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
