@@ -30,8 +30,8 @@ app.layout = html.Div(children=[
             ])
 
 #STYLESHEETS    
-app.css.append_css({"external_url": '/static/bootswatch.css'})
-app.css.append_css({"external_url": '/static/styles.css'})
+app.css.append_css({"external_url": '/static/stylesheets/bootswatch.css'})
+app.css.append_css({"external_url": '/static/stylesheets/styles.css'})
 
 #FOR EXCEPTIONS CALLED BY TWO CALLBACK FUNCTIONS
 app.config['suppress_callback_exceptions']=True 

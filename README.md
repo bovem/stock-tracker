@@ -5,6 +5,7 @@ This is a [Dash](.plot.ly/) server application that uses IEX API to display stoc
 How it works?
 --
 Enter any ticker symbol for a NASDAQ listed company (such as "AAPL" or "GOOGL" or "MSFT") and data is displayed in real time alongwith Graph.
+
 ![Example](static/images/Untitled.png)
 
 Downloading and requirements
@@ -23,8 +24,10 @@ I used [iexfinance](https://github.com/addisonlynch/iexfinance) API for stock da
 
 ### Exploratory Data Analysis
 
-From the data provided by API(open, close, high, low and volume), I calculated Percentage change using formula.
+From the data provided by API(open, close, high, low and volume), I calculated Percentage change using formula:
+
 ``Percentage Change = ((Current Price - Open Price)/Open Price)x100``
+
 I used a "ticker.csv" file for fetching name of the company from its ticker symbol.
 
 ### Data Visualization
