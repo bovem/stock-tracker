@@ -34,6 +34,11 @@ I used a "ticker.csv" file for fetching name of the company from its ticker symb
 
 I used Dash for Data Visualization which is a summation of [Flask Framework](http://flask.pocoo.org/",), [Plotly](https://plot.ly/) and [ReactJS](https://reactjs.org/) for real time update of graph and data, with changing ticker symbols.
 
+#### Note
+
+Since the html code written through the dash is difficult to understand I have added equivalent HTML code in 
+[html/](/html/) folder.
+
 Stylesheet
 --
 I have used Litera theme from [Bootswatch](https://bootswatch.com/)
