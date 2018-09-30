@@ -1,0 +1,24 @@
+.center-align{
+	text-align: center;
+}
+
+.seperator {
+    visibility: hidden;
+}
+.top-margin{
+	margin-top: 5rem;
+}
+.top-navbar{
+	margin-top: 0.5rem;
+}
+.big-close{
+	font-size: 80px;
+}
+.right-margin{
+	margin-right: 0.5rem;
+}
+
+.img-margin{
+	margin-top: 2rem;
+	margin-bottom: 2rem;
+}
