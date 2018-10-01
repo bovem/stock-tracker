@@ -8,13 +8,16 @@ Enter any ticker symbol for a NASDAQ listed company (such as "AAPL" or "GOOGL" o
 
 ![Example](static/images/Untitled.png)
 
-Downloading and requirements
+Using the application
 --
-To download the application
+Download the application
 `git clone https://github.com/avnish98/stock-tracker.git && cd stock-tracker`
 
-To install dependencies
-`pip install -r requirements.txt`
+Install dependencies
+`pip install -r requirements.txt`  
+
+Executing Application  
+`python3 app.py`
 
 How I made it?
 --
