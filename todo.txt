@@ -1,6 +1,8 @@
 README : https://www.makeareadme.com/
 PYPI : https://medium.freecodecamp.org/how-to-publish-a-pyton-package-on-pypi-a89e9522ce24
 Add license
+Create a gif of application
+How to use from Github
 Add contributing.md
 Add dockerfile 
 LinkedIn & Website
