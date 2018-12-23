@@ -1,47 +1,39 @@
-Stock Tracker
-==
-This is a [Dash](.plot.ly/) server application that uses IEX API to display stock data using ticker symbol of any NASDAQ listed company.
+# Stock Tracker
 
-How it works?
---
-Enter any ticker symbol for a NASDAQ listed company (such as "AAPL" or "GOOGL" or "MSFT") and data is displayed in real time alongwith Graph.
+Stock Tracker is an interactive data visualization application developed in Python, with the help of following libraries:
 
-![Example](static/images/Untitled.png)
+* [Dash](https://github.com/plotly/dash)  
+* [iexfinance](https://github.com/addisonlynch/iexfinance)
+* [Pandas](https://github.com/pandas-dev/pandas)
 
-Using the application
---
-Download the application  
-`git clone https://github.com/avnish98/stock-tracker.git && cd stock-tracker`
+It uses IEX Finance API to get intraday trading data of any NASDAQ listed corporation using the ticker symbol provided and plots it on an interactive graph using Dash. 
+ 
+Other than displaying current price, open price, high, low and volume of that stock, it also calculates percentage change of price in last one day interval. 
 
-Install dependencies  
-`pip install -r requirements.txt`  
+## Installation
 
-Executing Application  
-`python3 app.py`
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
-How I made it?
---
-### Data Collection
+```bash
+pip install foobar
+```
 
-I used [iexfinance](https://github.com/addisonlynch/iexfinance) API for stock data. It provides per day data including Open price, Close price, High & Low values and Volume of the stock.
+## Usage
 
-### Exploratory Data Analysis
+```python
+import foobar
 
-From the data provided by API(open, close, high, low and volume), I calculated Percentage change using formula:
+foobar.pluralize('word') # returns 'words'
+foobar.pluralize('goose') # returns 'geese'
+foobar.singularize('phenomena') # returns 'phenomenon'
+```
 
-``Percentage Change = ((Current Price - Open Price)/Open Price)x100``
+## Roadmap
+I am thinking about adding a prediction model to the applicaion.
 
-I used a "ticker.csv" file for fetching name of the company from its ticker symbol.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-### Data Visualization
 
-I used Dash for Data Visualization which is a summation of [Flask Framework](http://flask.pocoo.org/",), [Plotly](https://plot.ly/) and [ReactJS](https://reactjs.org/) for real time update of graph and data, with changing ticker symbols.
-
-#### Note
-
-Since the html code written through the dash is difficult to understand I have added equivalent HTML code in 
-[html/](/html/) folder.
-
-Stylesheet
---
-I have used Litera theme from [Bootswatch](https://bootswatch.com/)
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
