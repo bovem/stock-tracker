@@ -6,7 +6,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import time
-from info_page import info_page_layout
+
 
 app = dash.Dash()
 
@@ -22,11 +22,7 @@ app.layout = html.Div(children=[
              html.Div(className="container top-navbar", 
                      children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
                      children=[html.A(className='navbar-brand', href="/",
-                     children=["""Stock Tracker"""]),html.Div( className="collapse navbar-collapse",id="navbarColor03",
-                     children=[html.Ul(className="navbar-nav mr-auto", 
-                     children=[html.Li(className='nav-item', 
-                     children=[html.A(className="nav-link", href="/info", 
-                     children="""Info""")])])])])]),html.Div(id='page-content') 
+                     children=["""Stock Tracker"""])])]),html.Div(id='page-content') 
             ])
 
 #STYLESHEETS    
@@ -78,9 +74,6 @@ def display_page(pathname):
                             ])
         ])
 
-    #INFO PAGE
-    elif pathname == "/info":
-        return (info_page_layout)
 
 #CALLBACK FUNCTION FOR GRAPH
 @app.callback(

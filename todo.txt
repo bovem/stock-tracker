@@ -9,4 +9,6 @@ Create a gif of application
 How to use from Github
 Add contributing.md
 Add dockerfile 
+make a cmd application
 LinkedIn & Website
+Remove/refresh infopage 

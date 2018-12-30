@@ -14,23 +14,32 @@ Other than displaying current price, open price, high, low and volume of that st
 
 The interface is created using [Litera](https://bootswatch.com/litera/), a bootstrap theme from [Bootswatch](https://bootswatch.com/litera/).
 
-## Installation
+## Installation 
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+1. Clone repository
+```bash
+git clone https://github.com/avnish98/stock-tracker && cd stock-tracker/
+```  
+
+2. Installing dependencies (Use one of any two methods mentioned)
+
+2a. Using Docker [RECOMMENDED]
+
+2b. Without Docker
+Installing dependencies using [pip](https://pip.pypa.io/en/stable/).
 
 ```bash
-pip install foobar
-```
+python3 -m pip install -r requirements.txt
+```  
 
-## Usage
+## Execution  
 
-```python
-import foobar
+To run application 
 
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+```bash
+python3 app.py
+``` 
+This command will execute the application in your browser at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
 
 ## Roadmap
 
