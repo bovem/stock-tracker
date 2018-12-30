@@ -3,9 +3,9 @@ version: '3'
 services:
   web:
     build: .
-    command: bash -c "python app.py runserver 0.0.0.0:8000"
-    container_name: stock-tracker
-    volumes:
-      - .:/stock-tracker
-    ports:
-- "8000:8000"
+    command: bash -c "python app.py"
+    container_name: stock_tracker_app
+    volumes: 
+      - .:/stock_tracker_app
+    ports: 
+      - "8050:8050"
