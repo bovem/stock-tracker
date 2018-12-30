@@ -1,0 +1,6 @@
+README.md
+setup.py
+stock_tracker.egg-info/PKG-INFO
+stock_tracker.egg-info/SOURCES.txt
+stock_tracker.egg-info/dependency_links.txt
+stock_tracker.egg-info/top_level.txt
