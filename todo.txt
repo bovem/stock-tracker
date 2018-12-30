@@ -9,6 +9,7 @@ Create a gif of application
 How to use from Github
 Add contributing.md
 Add dockerfile 
+https://runnable.com/docker/python/dockerize-your-python-application
 make a cmd application
 LinkedIn & Website
 Remove/refresh infopage 
