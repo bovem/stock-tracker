@@ -1,5 +1,7 @@
 README : https://www.makeareadme.com/
+Installing pip
 PYPI : https://medium.freecodecamp.org/how-to-publish-a-pyton-package-on-pypi-a89e9522ce24
+        https://blog.jetbrains.com/pycharm/2017/05/how-to-publish-your-package-on-pypi/
 Add license
 Create a gif of application
 How to use from Github
