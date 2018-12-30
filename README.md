@@ -33,7 +33,8 @@ foobar.singularize('phenomena') # returns 'phenomenon'
 ```
 
 ## Roadmap
-I am thinking about adding a prediction model to the applicaion.
+
+Development of a prediction model is still in progress. 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
