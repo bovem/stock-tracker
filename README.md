@@ -8,9 +8,9 @@ Stock Tracker is an interactive data visualization application developed in Pyth
 
 It uses [IEX Finance API](https://iextrading.com/developer/) to get intraday trading data of any [NASDAQ](https://www.nasdaq.com/) listed company.  
 
-For that, it takes the ticker symbol of that company as input and price fluctions from January 1, 2015 to current date are plotted it on an interactive graph provided by plot.ly. 
- 
-Other than displaying current price, open price, high, low and volume of that stock, it also calculates percentage change of price in last one day interval. 
+For that, it takes the ticker symbol of that company as input and price fluctuations from January 1, 2015, to current date are plotted it on an interactive graph provided by plot.ly.
+
+Other than displaying current price, open price, high, low and volume of that stock, it also calculates percentage change of price in the last one-day interval.  
 
 The interface is created using [Litera](https://bootswatch.com/litera/), a bootstrap theme from [Bootswatch](https://bootswatch.com/litera/).
 
