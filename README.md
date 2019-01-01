@@ -1,10 +1,8 @@
 # Stock Tracker
 
-Stock Tracker is an interactive data visualization application developed in Python, with the help of 
+Stock Tracker is an interactive data visualization application developed in Python, with the help of [Dash](https://github.com/plotly/dash) ,                   [iexfinance](https://github.com/addisonlynch/iexfinance) and [Pandas](https://github.com/pandas-dev/pandas)
 
-* [Dash](https://github.com/plotly/dash)  
-* [iexfinance](https://github.com/addisonlynch/iexfinance)
-* [Pandas](https://github.com/pandas-dev/pandas)
+![DEMO](demo/demo.gif)
 
 It uses [IEX Finance API](https://iextrading.com/developer/) to get intraday trading data of any [NASDAQ](https://www.nasdaq.com/) listed company.  
 
