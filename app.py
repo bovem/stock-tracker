@@ -11,7 +11,7 @@ import time
 app = dash.Dash()
 
 #FOR FETCHING COMPANY NAME FROM TICKER SYMBOL
-ticker = pd.read_csv('tickers.csv', index_col="Symbol")
+ticker = pd.read_csv('spreadsheet/tickers.csv', index_col="Symbol")
 
 #HTML Layout
 app.layout = html.Div(children=[
