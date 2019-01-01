@@ -10,6 +10,7 @@ How to use from Github
 Add contributing.md
 Add dockerfile 
 https://runnable.com/docker/python/dockerize-your-python-application
+https://runnable.com/docker/python/dockerize-your-flask-application
 make a cmd application
 LinkedIn & Website
 Remove/refresh infopage 
