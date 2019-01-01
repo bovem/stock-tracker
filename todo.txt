@@ -1,0 +1,16 @@
+README : https://www.makeareadme.com/
+Installing pip
+PYPI : https://medium.freecodecamp.org/how-to-publish-a-pyton-package-on-pypi-a89e9522ce24
+        https://blog.jetbrains.com/pycharm/2017/05/how-to-publish-your-package-on-pypi/
+        https://blog.ionelmc.ro/2014/05/25/python-packaging/
+Write periord of data fluctuations        
+Add license
+Create a gif of application
+How to use from Github
+Add contributing.md
+Add dockerfile 
+https://runnable.com/docker/python/dockerize-your-python-application
+https://runnable.com/docker/python/dockerize-your-flask-application
+make a cmd application
+LinkedIn & Website
+Remove/refresh infopage 

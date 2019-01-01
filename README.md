@@ -1,47 +1,49 @@
-Stock Tracker
-==
-This is a [Dash](.plot.ly/) server application that uses IEX API to display stock data using ticker symbol of any NASDAQ listed company.
+# Stock Tracker
 
-How it works?
---
-Enter any ticker symbol for a NASDAQ listed company (such as "AAPL" or "GOOGL" or "MSFT") and data is displayed in real time alongwith Graph.
+Stock Tracker is an interactive data visualization application developed in Python, with the help of 
 
-![Example](static/images/Untitled.png)
+* [Dash](https://github.com/plotly/dash)  
+* [iexfinance](https://github.com/addisonlynch/iexfinance)
+* [Pandas](https://github.com/pandas-dev/pandas)
 
-Using the application
---
-Download the application  
-`git clone https://github.com/avnish98/stock-tracker.git && cd stock-tracker`
+It uses [IEX Finance API](https://iextrading.com/developer/) to get intraday trading data of any [NASDAQ](https://www.nasdaq.com/) listed company.  
 
-Install dependencies  
-`pip install -r requirements.txt`  
+For that, it takes the ticker symbol of that company as input and price fluctions from January 1, 2015 to current date are plotted it on an interactive graph provided by plot.ly. 
+ 
+Other than displaying current price, open price, high, low and volume of that stock, it also calculates percentage change of price in last one day interval. 
 
-Executing Application  
-`python3 app.py`
+The interface is created using [Litera](https://bootswatch.com/litera/), a bootstrap theme from [Bootswatch](https://bootswatch.com/litera/).
 
-How I made it?
---
-### Data Collection
+## Installation and Usage
 
-I used [iexfinance](https://github.com/addisonlynch/iexfinance) API for stock data. It provides per day data including Open price, Close price, High & Low values and Volume of the stock.
+1. Cloning repository
+```bash
+git clone https://github.com/avnish98/stock-tracker && cd stock-tracker/
+```  
 
-### Exploratory Data Analysis
+2. Installing dependencies using [pip](https://pip.pypa.io/en/stable/).
 
-From the data provided by API(open, close, high, low and volume), I calculated Percentage change using formula:
 
-``Percentage Change = ((Current Price - Open Price)/Open Price)x100``
 
-I used a "ticker.csv" file for fetching name of the company from its ticker symbol.
 
-### Data Visualization
+```bash
+python3 -m pip install -r requirements.txt
+```  
 
-I used Dash for Data Visualization which is a summation of [Flask Framework](http://flask.pocoo.org/",), [Plotly](https://plot.ly/) and [ReactJS](https://reactjs.org/) for real time update of graph and data, with changing ticker symbols.
 
-#### Note
+3. Executing application 
 
-Since the html code written through the dash is difficult to understand I have added equivalent HTML code in 
-[html/](/html/) folder.
+```bash
+python3 app.py
+``` 
+This command will execute the application in your browser at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
 
-Stylesheet
---
-I have used Litera theme from [Bootswatch](https://bootswatch.com/)
+## Roadmap
+
+Development of a prediction model is still in progress. 
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
