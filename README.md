@@ -18,6 +18,9 @@ The interface is created using [Litera](https://bootswatch.com/litera/), a boots
 
 ## Installation and Usage
 
+**Microsoft Windows users** have to follow [these](/WININSTALL.md) steps (if Python and Pip are not installed on system)
+
+
 1. Cloning repository
 ```bash
 git clone https://github.com/avnish98/stock-tracker && cd stock-tracker/
@@ -39,6 +42,8 @@ python3 -m pip install -r requirements.txt
 python3 app.py
 ``` 
 This command will execute the application in your browser at [http://127.0.0.1:8050/](http://127.0.0.1:8050/)
+
+
 
 ## Roadmap
 
