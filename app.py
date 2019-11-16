@@ -1,4 +1,5 @@
-from iexfinance import get_historical_data
+from iexfinance.stocks import get_historical_data
+#import quandl
 import pandas as pd
 import datetime as dt
 import dash
@@ -11,7 +12,7 @@ import time
 app = dash.Dash()
 
 #FOR FETCHING COMPANY NAME FROM TICKER SYMBOL
-ticker = pd.read_csv('spreadsheet/tickers.csv', index_col="Symbol")
+ticker = pd.read_csv('app/spreadsheet/tickers.csv', index_col="Symbol")
 
 #HTML Layout
 app.layout = html.Div(children=[
@@ -26,8 +27,8 @@ app.layout = html.Div(children=[
             ])
 
 #STYLESHEETS    
-app.css.append_css({"external_url": '/static/stylesheets/bootswatch.css'})
-app.css.append_css({"external_url": '/static/stylesheets/styles.css'})
+app.css.append_css({"external_url": 'app/static/stylesheets/bootswatch.css'})
+app.css.append_css({"external_url": 'app/static/stylesheets/styles.css'})
 
 #FOR EXCEPTIONS CALLED BY TWO CALLBACK FUNCTIONS
 app.config['suppress_callback_exceptions']=True 
@@ -56,7 +57,7 @@ def display_page(pathname):
         #STOCKS APP
         return html.Div([
             html.Div(className='container', 
-                            children=[html.Hr(className="seperator"), html.Div(className ='row', 
+                        children=[html.Hr(className="seperator"), html.Div(className ='row', 
 
                             #TICKER COLUMN
                             children=[html.Div(className ='col-lg-12',
@@ -87,7 +88,7 @@ def update_graph(input_data):
     #GET REQUEST FOR API
     try:
             name = ticker.loc[input_data, "Company"] 
-            df = get_historical_data(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
+            df = quandl.get(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
             
             #CALCULATING PERCENTAGE CHANGE
             pct_changes,COLOR = pct_change_formatter(pct_change(df.close[-2],df.close[-1]))
