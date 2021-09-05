@@ -1,4 +1,9 @@
-# Stock Tracker
+## Project Overview
+## Features
+## Screenshots
+## Techstack
+## Setup
+
 
 Stock Tracker is an interactive data visualization application developed in Python, with the help of [Dash](https://github.com/plotly/dash) ,                   [iexfinance](https://github.com/addisonlynch/iexfinance) and [Pandas](https://github.com/pandas-dev/pandas)
 
@@ -27,10 +32,6 @@ git clone https://github.com/avnish98/stock-tracker && cd stock-tracker/
 ```  
 
 2. Installing dependencies using [pip](https://pip.pypa.io/en/stable/).
-
-
-
-
 ```bash
 python3 -m pip install -r requirements.txt
 ```  
