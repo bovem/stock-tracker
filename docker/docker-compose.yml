@@ -1,0 +1,18 @@
+version: "3"
+services:
+  stock-tracker:
+    volumes:
+      - ..:/app
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: stock-tracker
+    image: stock-tracker
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 50m
+    ports:
+      - "8050:8050"
+    command: python3 app/app.py
