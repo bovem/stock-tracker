@@ -21,7 +21,7 @@ app.layout = html.Div(children=[
 
              #NAVIGATION BAR
              html.Div(className="container top-navbar", 
-                     children=[html.Nav(className=["navbar navbar-expand-lg navbar-light bg-light"],
+                     children=[html.Nav(className="navbar navbar-expand-lg navbar-light bg-light",
                      children=[html.A(className='navbar-brand', href="/",
                      children=["""Stock Tracker"""])])]),html.Div(id='page-content') 
             ])
@@ -139,4 +139,4 @@ def update_graph(input_data):
 
             
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", port=8050, debug=True)

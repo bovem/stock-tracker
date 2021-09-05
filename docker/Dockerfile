@@ -15,3 +15,4 @@ RUN mkdir app/
 #RUN cp ../requirements.txt ${workdir}
 COPY . app/
 RUN python3 -m pip install -r app/requirements.txt
+EXPOSE 8050
