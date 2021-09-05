@@ -31,7 +31,7 @@ The interface is created using [Litera](https://bootswatch.com/litera/), a boots
 git clone https://github.com/avnish98/stock-tracker && cd stock-tracker/
 ```  
 
-2. Installing dependencies using [pip](https://pip.pypa.io/en/stable/).
+2. Installing dependencies using [pip](https://pip.pypa.io/en/stable/). 
 ```bash
 python3 -m pip install -r requirements.txt
 ```  
