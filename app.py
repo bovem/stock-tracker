@@ -1,4 +1,5 @@
-from iexfinance.stocks import get_historical_data
+#from iexfinance.stocks import get_historical_data
+import yfinance as yf
 #import quandl
 import pandas as pd
 import datetime as dt
@@ -21,14 +22,15 @@ app.layout = html.Div(children=[
 
              #NAVIGATION BAR
              html.Div(className="container top-navbar", 
-                     children=[html.Nav(className="navbar navbar-expand-lg navbar-light bg-light",
+                     children=[html.Nav(className="navbar",
                      children=[html.A(className='navbar-brand', href="/",
                      children=["""Stock Tracker"""])])]),html.Div(id='page-content') 
             ])
 
 #STYLESHEETS    
-app.css.append_css({"external_url": 'app/static/stylesheets/bootswatch.css'})
-app.css.append_css({"external_url": 'app/static/stylesheets/styles.css'})
+app.css.config.serve_locally = False
+app.css.append_css({"external_url": './static/stylesheets/bootswatch.css'})
+app.css.append_css({"external_url": './static/stylesheets/styles.css'})
 
 #FOR EXCEPTIONS CALLED BY TWO CALLBACK FUNCTIONS
 app.config['suppress_callback_exceptions']=True 
@@ -88,18 +90,19 @@ def update_graph(input_data):
     #GET REQUEST FOR API
     try:
             name = ticker.loc[input_data, "Company"] 
-            df = quandl.get(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
+            #df = quandl.get(str(input_data).upper(),start_date=start_date, end_date=end_date, output_format='pandas')
+            df = yf.Ticker(str(input_data).upper()).history(period="max").round(2)
             
             #CALCULATING PERCENTAGE CHANGE
-            pct_changes,COLOR = pct_change_formatter(pct_change(df.close[-2],df.close[-1]))
+            pct_changes,COLOR = pct_change_formatter(pct_change(df.Close[-2],df.Close[-1]))
 
             #LAYOUT FOR GRAPH
             return (html.Div(className="row", children=[
             html.Div(className="col-lg-8", children=[dcc.Graph(
             id='stocks_graph',
             figure={
-            'data':[{'x':df.index, 'y':df.close, 'type':'line', 'name':input_data}],
-            'layout':{'title':str(name)}})]),
+            'data':[{'x':df.index, 'y':df.Close, 'type':'line', 'name':input_data}],
+            'layout':{'title':"{} ({})".format(str(name), str(input_data).upper())}})]),
 
             #INDICATORS ON SIDE
             html.Div(className="col-lg-4", children=[
@@ -108,7 +111,7 @@ def update_graph(input_data):
 
             #CURRENT PRICE
             html.Div(className="col-sm-8", children=[
-            html.H1(className="center-align big-close", children=[df.close[-1]])]),
+            html.H1(className="center-align big-Close", children=[df.Close[-1]])]),
 
             #PERCENTAGE CHANGE IN PRICES
             html.Div(className="col-sm-4", children=[
@@ -117,24 +120,25 @@ def update_graph(input_data):
             #OPEN PRICE AT THAT DAY
             html.Div(className="row", children=[html.Div(className="col-sm-6", children=[
             html.H6(className="center-align",children=["Open"]), 
-            html.H4(className="center-align",children=[df.open[-1]])]),
+            html.H4(className="center-align",children=[df.Open[-1]])]),
 
             #HIGHEST PRICE 
             html.Div(className="col-sm-6", children=[
             html.H6(className="center-align", children=["High"]),
-            html.H4(className="center-align",children=[df.high[-1]])])]),
+            html.H4(className="center-align",children=[df.High[-1]])])]),
 
             #LOWEST PRICE
             html.Div(className="row", children=[html.Div(className="col-sm-6", children=[
             html.H6(className="center-align", children=["Low"]), 
-            html.H4(className="center-align",children=[df.low[-1]])]),
+            html.H4(className="center-align",children=[df.Low[-1]])]),
             
             #VOLUME 
             html.Div(className="col-sm-6", children=[
             html.H6(className="center-align", children=["Volume"]), 
-            html.H4(className="center-align",children=[df.volume[-1]])])])])])]))
+            html.H4(className="center-align",children=[df.Volume[-1]])])])])])]))
             
-    except:    
+    except Exception as e:    
+            print("Error occured: {}".format(e))
             time.sleep(1) 
 
             

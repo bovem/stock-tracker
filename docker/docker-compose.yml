@@ -1,6 +1,8 @@
 version: "3"
 services:
   stock-tracker:
+    volumes:
+      - ..:/app
     build:
       context: ../
       dockerfile: ./docker/Dockerfile

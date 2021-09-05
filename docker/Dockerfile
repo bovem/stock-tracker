@@ -13,6 +13,7 @@ RUN apt-get update && apt-get upgrade -y \
 
 RUN mkdir app/
 #RUN cp ../requirements.txt ${workdir}
-COPY . app/
-RUN python3 -m pip install -r app/requirements.txt
+COPY requirements.txt .
+RUN python3 -m pip install -r requirements.txt
+RUN python3 -m pip install yfinance
 EXPOSE 8050
