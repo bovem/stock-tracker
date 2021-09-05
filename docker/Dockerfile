@@ -10,9 +10,7 @@ RUN apt-get update && apt-get upgrade -y \
         unzip zip python3 python3-pip\
     && rm -rf /var/lib/apt/lists/*
 
-
 RUN mkdir app/
-#RUN cp ../requirements.txt ${workdir}
 COPY requirements.txt .
 RUN python3 -m pip install -r requirements.txt
 RUN python3 -m pip install yfinance
